@@ -1,0 +1,32 @@
+﻿@model BusinessTransactionsAccounting.Models.Account
+@{
+    var transactions = ViewBag.Transactions as List<BusinessTransactionsAccounting.Models.Transaction>;
+}
+
+<h2>@Model.AccountName - Details</h2>
+<p><strong>Balance:</strong> @Model.Balance</p>
+
+<h3>Transactions</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in transactions)
+        {
+            <tr>
+                <td>@transaction.Date.ToShortDateString()</td>
+                <td>@transaction.Description</td>
+                <td>@transaction.Amount</td>
+                <td>@transaction.Type</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Transaction", new { accountId = Model.Id })">Add Transaction</a>

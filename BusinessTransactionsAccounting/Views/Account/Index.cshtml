@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BusinessTransactionsAccounting.Models.Account>
+
+<h2>Accounts</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Account Name</th>
+            <th>Balance</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.AccountName</td>
+                <td>@account.Balance</td>
+                <td>
+                    <a href="@Url.Action("Details", "Account", new { id = account.Id })">View Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
